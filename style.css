@@ -1,0 +1,185 @@
+    :root {
+      --control-size: 52px;
+      --control-icon-size: 23px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 100vw;
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow: hidden;
+      background: #000;
+      font-family: Arial, sans-serif;
+      overscroll-behavior: none;
+    }
+
+    #viewer {
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      touch-action: none;
+    }
+
+    #viewer canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .overlay {
+      position: fixed;
+      top: max(14px, env(safe-area-inset-top));
+      left: max(14px, env(safe-area-inset-left));
+      z-index: 10;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      width: min(280px, calc(100vw - 28px));
+      padding: clamp(10px, 1.8vw, 14px) clamp(12px, 2.2vw, 18px);
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
+    }
+
+    .overlay h1 {
+      font-size: clamp(16px, 2vw, 18px);
+      margin-bottom: 6px;
+    }
+
+    .overlay p {
+      font-size: clamp(12px, 1.8vw, 14px);
+      opacity: 0.8;
+      line-height: 1.4;
+    }
+
+    .controls {
+      position: fixed;
+      left: 50%;
+      bottom: max(18px, env(safe-area-inset-bottom));
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(6px, 1.5vw, 18px);
+      width: auto;
+      max-width: calc(100vw - 16px);
+      transform: translateX(-50%);
+      color: #fff;
+      user-select: none;
+    }
+
+    .control-btn {
+      width: var(--control-size);
+      height: var(--control-size);
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+      background: rgba(22, 24, 39, 0.86);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(8px);
+      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    }
+
+    .control-btn:hover {
+      transform: translateY(-2px);
+      background: rgba(32, 35, 56, 0.92);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .control-btn:active {
+      transform: translateY(0) scale(0.96);
+    }
+
+    .control-btn svg {
+      width: var(--control-icon-size);
+      height: var(--control-icon-size);
+      stroke: currentColor;
+      stroke-width: 2.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      pointer-events: none;
+    }
+
+    .fov-indicator {
+      min-width: clamp(36px, 6vw, 50px);
+      flex: 0 0 auto;
+      text-align: center;
+      font-size: clamp(13px, 2vw, 16px);
+      color: rgba(255, 255, 255, 0.78);
+      letter-spacing: 0;
+    }
+
+    .brand-logo {
+      position: fixed;
+      right: clamp(14px, 2.4vw, 32px);
+      bottom: clamp(14px, 2.4vw, 32px);
+      z-index: 18;
+      width: clamp(88px, 12vw, 180px);
+      max-width: 34vw;
+      height: auto;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    @media (max-width: 640px) {
+      .controls {
+        bottom: calc(max(14px, env(safe-area-inset-bottom)) + clamp(56px, 18vw, 86px));
+      }
+
+      .overlay {
+        max-width: calc(100vw - 28px);
+      }
+
+      .overlay p {
+        display: block;
+      }
+
+      .brand-logo {
+        width: clamp(76px, 24vw, 112px);
+        max-width: 32vw;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .controls {
+        gap: 5px;
+      }
+
+      .fov-indicator {
+        min-width: 34px;
+      }
+    }
+
+    @media (max-height: 520px) and (orientation: landscape) {
+      .overlay {
+        top: 10px;
+        left: 10px;
+        width: auto;
+        max-width: 240px;
+      }
+
+      .overlay p {
+        display: block;
+      }
+
+      .controls {
+        bottom: max(10px, env(safe-area-inset-bottom));
+        width: min(calc(100vw - 160px), 480px);
+      }
+
+      .brand-logo {
+        right: max(10px, env(safe-area-inset-right));
+        bottom: max(10px, env(safe-area-inset-bottom));
+        width: clamp(70px, 12vw, 110px);
+      }
+    }

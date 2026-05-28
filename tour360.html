@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tour Virtual 360</title>
+  <link rel="stylesheet" href="./style.css" />
+
+</head>
+
+<body>
+
+  <div class="overlay">
+    <h1>Tour Virtual 360</h1>
+    <p>
+      Arraste para olhar ao redor.<br>
+      Use scroll para zoom.
+    </p>
+  </div>
+
+  <div class="controls" aria-label="Controles do tour 360">
+    <button class="control-btn" type="button" id="lookLeft" aria-label="Girar para a esquerda" title="Girar para a esquerda">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+
+    <button class="control-btn" type="button" id="zoomOut" aria-label="Diminuir zoom" title="Diminuir zoom">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"></circle>
+        <path d="M8 11h6"></path>
+        <path d="M16.5 16.5 21 21"></path>
+      </svg>
+    </button>
+
+    <span class="fov-indicator" id="fovIndicator">75&deg;</span>
+
+    <button class="control-btn" type="button" id="zoomIn" aria-label="Aumentar zoom" title="Aumentar zoom">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"></circle>
+        <path d="M11 8v6"></path>
+        <path d="M8 11h6"></path>
+        <path d="M16.5 16.5 21 21"></path>
+      </svg>
+    </button>
+
+    <button class="control-btn" type="button" id="lookRight" aria-label="Girar para a direita" title="Girar para a direita">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+
+    <button class="control-btn" type="button" id="fullscreen" aria-label="Tela cheia" title="Tela cheia">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
+        <path d="M16 3h3a2 2 0 0 1 2 2v3"></path>
+        <path d="M8 21H5a2 2 0 0 1-2-2v-3"></path>
+        <path d="M16 21h3a2 2 0 0 0 2-2v-3"></path>
+      </svg>
+    </button>
+  </div>
+
+  <img
+    class="brand-logo"
+    src="./aprende-brasil-logo.png"
+    alt="Aprende Brasil"
+  />
+
+  <div id="viewer"></div>
+
+  <!-- THREE JS -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
+  <script src="./script.js"></script>
+
+</body>
+</html>
